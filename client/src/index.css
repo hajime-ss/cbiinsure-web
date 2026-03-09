@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap');
+
+@theme {
+    --color-neon-green: #00f0ff;
+    --color-emerald-500: #10b981;
+    --color-emerald-600: #059669;
+    --color-gold-400: #fbbf24;
+    --color-gold-500: #d4af37;
+    --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+}
+
+@layer base {
+    body {
+        /* Removed bg-black to ensure fixed background shows through transparently */
+        @apply text-white antialiased selection:bg-emerald-500/30 selection:text-emerald-200;
+        font-family: 'Kanit', sans-serif;
+        /* Implementing requested FC Subject aesthetic */
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    .font-display {
+        font-family: 'Kanit', sans-serif;
+        font-weight: 700;
+        /* Increased weight for headers */
+        letter-spacing: -0.02em;
+        /* Tighter tracking for premium feel */
+    }
+
+    .font-thai {
+        font-family: 'Kanit', sans-serif;
+    }
+}
+
+@layer utilities {
+    .glass {
+        @apply bg-zinc-900/80 backdrop-blur-md border-b border-white/10;
+    }
+
+    .glass-premium {
+        @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-premium rounded-sm;
+    }
+
+    .glass-hover {
+        @apply hover:bg-zinc-800/90 transition-all duration-200;
+    }
+
+    .text-gradient-gold {
+        @apply bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 bg-clip-text text-transparent;
+    }
+
+    /* Modern Sharp Input with animated focus */
+    .input-sharp {
+        @apply w-full bg-white border border-zinc-300 px-4 py-3 text-zinc-900 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all duration-300 placeholder:text-zinc-400 rounded-sm hover:border-zinc-400;
+    }
+
+    /* Sharp Button with detailed interaction */
+    .btn-sharp {
+        @apply bg-emerald-600 text-white font-bold py-3 px-6 transition-all duration-300 transform hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-900/20 hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm rounded-sm flex items-center justify-center gap-2;
+    }
+}
