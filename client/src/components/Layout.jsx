@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { Facebook, Info, Globe, Shield, User, LogOut, Menu, X } from 'lucide-react';
+import { Facebook, Info, Globe, Shield, User, LogOut, Menu, X, MessageCircle } from 'lucide-react';
 import { auth } from '../firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import Footer from './Footer';
 
 const Layout = () => {
-    const [lang, setLang] = useState('EN');
+    const [lang, setLang] = useState('TH');
     const [bgImage, setBgImage] = useState('/bg1.jpg');
     const [user, setUser] = useState(null);
     const [showGreeting, setShowGreeting] = useState(false);
@@ -52,10 +52,11 @@ const Layout = () => {
 
     const navText = {
         EN: { home: "Home", plans: "Insurance Plans", why: "Why Us", chat: "Chat with us" },
-        TH: { home: "หน้าแรก", plans: "แผนประกันภัย", why: "ทำไมต้องเรา", chat: "ปรึกษาเรา" }
+        TH: { home: "หน้าแรก", plans: "แผนประกันภัย", why: "ทำไมต้องเรา", chat: "ปรึกษาเรา" },
+        ZH: { home: "首页", plans: "保险计划", why: "为什么选择我们", chat: "联系我们" }
     };
 
-    const t = navText[lang];
+    const t = navText[lang] || navText.TH;
 
     return (
         <div className="min-h-screen relative font-sans text-white overflow-x-hidden">
@@ -92,14 +93,14 @@ const Layout = () => {
 
                 <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6 relative z-10">
                     {/* Logo Area */}
-                    <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition">
-                        <div className="bg-white p-1 rounded-sm shadow-sm">
-                            <img src="/logo.jpg" alt="Logo" className="h-8 w-auto" />
-                        </div>
-                        <span className="font-bold tracking-wide text-lg text-white drop-shadow-md">CHONBURI INSURANCE</span>
-                    </Link>
-
-                    {/* Menu Items (Desktop) */}
+                        <Link to="/" className="flex items-center gap-3 group">
+                            <div className="bg-white p-1.5 rounded-sm shadow-md group-hover:shadow-emerald-500/20 transition-all duration-300">
+                                <img src="/logo.jpg" alt="Chonburi Insure" className="h-8 w-auto object-contain" />
+                            </div>
+                            <h1 className="text-xl font-bold tracking-tight text-white font-display hidden sm:block whitespace-nowrap">
+                                CHONBURI <span className="text-emerald-400">INSURANCE</span>
+                            </h1>
+                        </Link>
                     <div className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wide text-white/90">
 
                         <Link to="/" className="hover:text-amber-400 transition uppercase text-xs tracking-wider font-thai">
@@ -117,25 +118,17 @@ const Layout = () => {
                         {/* Auth Section */}
                         {user ? (
                             <div className="flex items-center gap-4 border-l border-white/20 pl-6 ml-2">
-                                <Link to="/profile" className="flex items-center gap-2 hover:text-emerald-400 transition group">
-                                    {user.photoURL ? (
-                                        <img src={user.photoURL} alt="Profile" className="w-8 h-8 rounded-full border border-white/30" />
-                                    ) : (
-                                        <div className="bg-emerald-600 p-1.5 rounded-full">
-                                            <User size={16} />
-                                        </div>
-                                    )}
-                                    <span className="hidden md:block max-w-[100px] truncate text-xs font-normal opacity-80 group-hover:opacity-100">
-                                        {user.displayName?.split(' ')[0]}
-                                    </span>
-                                </Link>
-                                <button
-                                    onClick={handleLogout}
-                                    className="text-white/50 hover:text-red-400 transition"
-                                    title="Sign Out"
-                                >
-                                    <LogOut size={16} />
-                                </button>
+                                        <Link to="/profile" className="flex items-center gap-2 group">
+                                            <div className="bg-emerald-500/20 p-2 rounded-full text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                                                <User size={18} />
+                                            </div>
+                                            <span className="hidden lg:block text-sm font-bold text-white group-hover:text-emerald-300 transition-colors font-sans truncate max-w-[100px]">
+                                                {user.displayName?.split(' ')[0] || user.email?.split('@')[0] || t.profile}
+                                            </span>
+                                        </Link>
+                                        <button onClick={handleLogout} className="text-zinc-400 hover:text-red-400 transition-colors bg-white/5 p-2 rounded-full hover:bg-red-500/20 group">
+                                            <LogOut size={18} className="group-hover:scale-110 transition-transform" />
+                                        </button>
                             </div>
                         ) : (
                             <Link
@@ -156,20 +149,28 @@ const Layout = () => {
                             <Facebook size={18} />
                         </a>
 
-                        {/* Language Toggle - Sharp */}
-                        <div className="flex border border-white/20 rounded-sm overflow-hidden">
-                            <button
-                                onClick={() => setLang('EN')}
-                                className={`px-2 py-1 text-[10px] font-bold transition ${lang === 'EN' ? 'bg-white text-emerald-900' : 'text-white hover:bg-white/10'}`}
-                            >
-                                EN
-                            </button>
-                            <button
-                                onClick={() => setLang('TH')}
-                                className={`px-2 py-1 text-[10px] font-bold transition ${lang === 'TH' ? 'bg-white text-emerald-900' : 'text-white hover:bg-white/10'}`}
-                            >
-                                TH
-                            </button>
+                        {/* Language Toggle - Premium Gen Z */}
+                        <div className="flex bg-zinc-900 p-1 rounded-sm border border-white/10 shadow-lg relative">
+                            {[
+                                { code: 'TH', label: '🇹🇭 TH' },
+                                { code: 'EN', label: '🇬🇧 EN' },
+                                { code: 'ZH', label: '🇨🇳 ZH' }
+                            ].map((l) => (
+                                <button
+                                    key={l.code}
+                                    onClick={() => setLang(l.code)}
+                                    className={`relative px-4 py-1.5 text-xs font-bold rounded-sm transition-all duration-300 ${lang === l.code ? 'text-zinc-900' : 'text-zinc-400 hover:text-white'}`}
+                                >
+                                    {lang === l.code && (
+                                        <motion.div
+                                            layoutId="active-lang"
+                                            className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-sm shadow-md"
+                                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10">{l.label}</span>
+                                </button>
+                            ))}
                         </div>
                     </div>
 
@@ -224,11 +225,30 @@ const Layout = () => {
                                 )}
                             </div>
 
-                            <div className="flex justify-between items-center pt-4">
-                                <div className="flex gap-2">
-                                    <button onClick={() => setLang('EN')} className={`px-4 py-2 rounded-sm font-bold ${lang === 'EN' ? 'bg-emerald-600 text-white' : 'bg-zinc-800 text-zinc-400'}`}>EN</button>
-                                    <button onClick={() => setLang('TH')} className={`px-4 py-2 rounded-sm font-bold ${lang === 'TH' ? 'bg-emerald-600 text-white' : 'bg-zinc-800 text-zinc-400'}`}>TH</button>
-                                </div>
+                            <div className="pt-4 mt-auto">
+                                <p className="text-zinc-500 text-xs mb-3 font-bold uppercase tracking-wider">Select Language</p>
+                                    <div className="flex bg-zinc-900 p-1 rounded-sm border border-white/10 shadow-lg relative">
+                                        {[
+                                            { code: 'TH', label: '🇹🇭 TH' },
+                                            { code: 'EN', label: '🇬🇧 EN' },
+                                            { code: 'ZH', label: '🇨🇳 ZH' }
+                                        ].map((l) => (
+                                            <button
+                                                key={l.code}
+                                                onClick={() => setLang(l.code)}
+                                                className={`relative px-4 py-1.5 text-xs font-bold rounded-sm transition-all duration-300 ${lang === l.code ? 'text-zinc-900' : 'text-zinc-400 hover:text-white'}`}
+                                            >
+                                                {lang === l.code && (
+                                                    <motion.div
+                                                        layoutId="active-lang"
+                                                        className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-sm shadow-md"
+                                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                                    />
+                                                )}
+                                                <span className="relative z-10">{l.label}</span>
+                                            </button>
+                                        ))}
+                                    </div>
                             </div>
                         </div>
                     </motion.div>
@@ -244,14 +264,15 @@ const Layout = () => {
 
             {/* Floating LINE Button */}
             <a
-                href="https://line.me/ti/p/~@chonburiins"
+                href="https://line.me/ti/p/~@chonburiinsure"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="fixed bottom-6 right-6 z-50 bg-[#06C755] hover:bg-[#05b64c] text-white p-4 rounded-2xl shadow-lg hover:scale-110 transition duration-300 group flex items-center justify-center border-2 border-white/20"
+                rel="noreferrer"
+                className="fixed bottom-6 right-6 z-50 bg-[#00B900] text-white p-3 rounded-xl shadow-xl shadow-[#00B900]/30 hover:shadow-[#00B900]/50 hover:-translate-y-1 transition-all flex items-center justify-center group"
+                aria-label="Contact us on LINE"
             >
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" className="w-8 h-8" />
-                <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 whitespace-nowrap font-bold font-thai">
-                    {t.chat}
+                <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
+                <span className="absolute right-full mr-4 bg-white text-zinc-900 text-xs px-3 py-1.5 rounded-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg pointer-events-none font-thai">
+                    สอบถามข้อมูลเพิ่มเติม
                 </span>
             </a>
             {/* Greeting Toast */}

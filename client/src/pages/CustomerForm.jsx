@@ -54,6 +54,23 @@ const CustomerForm = () => {
             btn_submit: "ส่งข้อมูลเพื่อขอใบเสนอราคา",
             success_title: "ได้รับข้อมูลของท่านเรียบร้อยแล้ว",
             success_msg: "เจ้าหน้าที่และระบบ AI กำลังตรวจสอบข้อมูลเพื่อจัดทำข้อเสนอที่ดีที่สุดให้ท่าน"
+        },
+        ZH: {
+            title: "开始您的保障",
+            validation_hint: "* 必须填写所有框才能继续。",
+            steps: ["驾驶员", "车辆", "提交"],
+            step1_title: "驾驶员信息",
+            fields: { name: "全名", email: "电子邮件地址", phone: "电话号码" },
+            step2_title: "车辆详情",
+            fields2: { make: "品牌", model: "型号", year: "注册年份" },
+            step3_title: "最后步骤",
+            upload: "拖放文件或点击上传（车辆登记证）",
+            notes: "补充说明...",
+            btn_next: "下一步",
+            btn_back: "返回",
+            btn_submit: "提交申请",
+            success_title: "已收到申请",
+            success_msg: "我们的AI经理正在审核您的详细信息。"
         }
     };
 

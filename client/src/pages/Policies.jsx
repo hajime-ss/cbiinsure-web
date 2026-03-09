@@ -71,12 +71,43 @@ const ScenarioSimulator = ({ lang }) => {
                 desc: "ความเสียหายต่อทรัพย์สินหรือร่างกายของบุคคลภายนอก",
                 covered: ["ชั้น 1", "ชั้น 2+", "ชั้น 3+", "ชั้น 2", "ชั้น 3"]
             }
+        ],
+        ZH: [
+            {
+                id: 'collision',
+                icon: CarFront,
+                title: "车撞车",
+                desc: "在道路上碰撞陆地车辆（另一辆车、出租车、摩托车等）。",
+                covered: ["一等", "二等+", "三等+"]
+            },
+            {
+                id: 'hit-object',
+                icon: Construction,
+                title: "撞护栏/柱子",
+                desc: "单方事故（撞墙、柱子、人行道）。无对方车辆参与。",
+                covered: ["一等"]
+            },
+            {
+                id: 'stolen',
+                icon: UserMinus,
+                title: "被盗 / 火灾",
+                desc: "您的车辆被盗、被抢或发生火灾。",
+                covered: ["一等", "二等+", "二等"]
+            },
+            {
+                id: 'third-party',
+                icon: Users,
+                title: "第三方",
+                desc: "对他人车辆、财产或人身造成的损害。",
+                covered: ["一等", "二等+", "三等+", "二等", "三等"]
+            }
         ]
     };
 
     const plans = {
         EN: ["Type 1", "Type 2+", "Type 3+", "Type 2", "Type 3"],
-        TH: ["ชั้น 1", "ชั้น 2+", "ชั้น 3+", "ชั้น 2", "ชั้น 3"]
+        TH: ["ชั้น 1", "ชั้น 2+", "ชั้น 3+", "ชั้น 2", "ชั้น 3"],
+        ZH: ["一等", "二等+", "三等+", "二等", "三等"]
     };
 
     const currentScenarios = scenarios[lang] || scenarios.EN;
@@ -217,6 +248,33 @@ const ComparisonTable = ({ lang }) => {
                 }
             ],
             note: "* ชั้น 2+ และ 3+ คุ้มครองตัวรถเฉพาะอุบัติเหตุที่มีคู่กรณีเป็นยานพาหนะทางบกเท่านั้น"
+        },
+        ZH: {
+            headers: ["一等", "二等+", "三等+", "二等", "三等"],
+            sections: [
+                {
+                    title: "第三方责任",
+                    rows: [
+                        { name: "他人财产", values: [true, true, true, true, true] },
+                        { name: "他人生命 / 人身伤害", values: [true, true, true, true, true] }
+                    ]
+                },
+                {
+                    title: "您的车辆保障",
+                    rows: [
+                        { name: "与陆地车辆碰撞", values: [true, true, true, false, false] },
+                        { name: "无第三方（撞墙/护栏）", values: [true, false, false, false, false] }
+                    ]
+                },
+                {
+                    title: "特别保障",
+                    rows: [
+                        { name: "车辆被盗 / 被抢", values: [true, true, false, true, false] },
+                        { name: "火灾损失", values: [true, true, false, true, false] }
+                    ]
+                }
+            ],
+            note: "* 二等+和三等+的车辆损失保障仅在有对方（碰撞）时有效。"
         }
     };
 
@@ -316,6 +374,19 @@ const Policies = () => {
                 { id: 6, title: "ประกันภัยไซเบอร์", desc: "ปกป้องข้อมูลสำคัญจากภัยคุกคามดิจิทัล", icon: Shield, details: "เยียวยาเหตุการณ์ข้อมูลรั่วไหล มัลแวร์เรียกค่าไถ่ และความรับผิดทางโลกออนไลน์" },
             ],
             cta: "เช็คราคาประกันรถยนต์"
+        },
+        ZH: {
+            title: "保险计划",
+            subtitle: "豪华保障与专业风险管理的结合。",
+            policies: [
+                { id: 1, title: "汽车保险", desc: "5个精心设计的保障级别供您选择。", icon: Car, details: "我们提供一等、二等+、三等+、二等和三等计划。无论您想要全面的'全险'还是基本的第三方保障。" },
+                { id: 2, title: "房屋与财产", desc: "保护您的住所免受火灾、盗窃和自然灾害的侵害。", icon: Home, details: "覆盖房屋结构和内部物品。包含全天候家庭紧急救援服务。" },
+                { id: 3, title: "健康与人寿", desc: "确保您和家人的健康福祉。", icon: Heart, details: "顶级私立医院的门诊/住院选项。合作医院无需垫付。" },
+                { id: 4, title: "商业保障", desc: "为您的中小企业或公司资产降低风险。", icon: Briefcase, details: "为您的行业量身定制的财产损失、责任和业务中断保障。" },
+                { id: 5, title: "安心旅游", desc: "为您提供世界级的国际旅行保障。", icon: Plane, details: "海外医疗紧急情况、航班延误和行李丢失。提供全球援助保障。" },
+                { id: 6, title: "网络护盾", desc: "保护您的数字资产免受现代威胁。", icon: Shield, details: "数据泄露响应、勒索软件保护和数字责任保险。" },
+            ],
+            cta: "立即获取报价"
         }
     };
 
@@ -374,6 +445,7 @@ const Policies = () => {
                                         animate={{ opacity: 1, height: 'auto' }}
                                         exit={{ opacity: 0, height: 0 }}
                                         className="border-t border-white/10 pt-8 mt-6 overflow-hidden"
+                                        onClick={(e) => e.stopPropagation()}
                                     >
                                         <p className="text-emerald-400 font-thai text-sm mb-10 leading-relaxed font-medium bg-emerald-500/5 p-4 rounded-xl border border-emerald-500/10">
                                             {policy.details}

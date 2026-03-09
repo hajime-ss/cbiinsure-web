@@ -39,6 +39,23 @@ const Footer = ({ lang = 'EN' }) => {
             privacy: "นโยบายความเป็นส่วนตัว",
             terms: "เงื่อนไขการให้บริการ",
             license: "ใบอนุญาตเลขที่ 6404001234"
+        },
+        ZH: {
+            desc: "您值得信赖的本地全面保险合作伙伴。自2010年以来，将国际标准与邻里关怀相结合。",
+            quick_links: "快速链接",
+            links: [
+                { name: '关于我们', path: '/about' },
+                { name: '我们的保单', path: '/policies' },
+                { name: '理赔中心', path: '/claims' },
+                { name: '联系支持', path: '/contact' }
+            ],
+            stay_updated: "保持更新",
+            newsletter_desc: "获取最新的交通新闻和省税技巧。",
+            email_placeholder: "电子邮件地址",
+            rights: "春武里保险经纪公司。保留所有权利。",
+            privacy: "隐私政策",
+            terms: "服务条款",
+            license: "许可证号 6404001234"
         }
     };
 

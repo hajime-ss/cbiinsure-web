@@ -82,6 +82,18 @@ const Home = () => {
                 { title: "บริการเคลมด่วนพิเศษ", desc: "จัดการเคลมรวดเร็วด้วยทีมงานดูแลส่วนบุคคล (Concierge)", icon: Zap, img: "/features/fasttrack.jpg" },
                 { title: "แผนประกันเฉพาะคุณ", desc: "ออกแบบความคุ้มครองให้ตอบโจทย์ไลฟ์สไตล์ที่เป็นคุณ", icon: Star, img: "/features/personalized.jpg" }
             ]
+        },
+        ZH: {
+            tagline: "春武里排名第一",
+            title: "高级保障",
+            subtitle: "泰国最值得信赖的保险代理",
+            btn: "获取报价",
+            stats: ["超过1万客户", "24/7 客户支持", "最优费率"],
+            features: [
+                { title: "全面保障", desc: "涵盖事故、盗窃和自然灾害的全面保护。", icon: Shield, img: "/features/comprehensive.jpg" },
+                { title: "快速理赔", desc: "由我们的专属礼宾团队优先处理。", icon: Zap, img: "/features/fasttrack.jpg" },
+                { title: "个性化", desc: "量身定制的计划，适合您的特定生活方式。", icon: Star, img: "/features/personalized.jpg" }
+            ]
         }
     };
 
@@ -96,35 +108,36 @@ const Home = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="max-w-2xl text-center relative z-10"
+                    className="max-w-3xl text-center relative z-10"
                 >
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="inline-block bg-emerald-600 text-white text-xs font-bold px-3 py-1 mb-6 tracking-widest uppercase rounded-sm font-thai"
+                        className="inline-block bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-md border border-white/20 text-emerald-300 text-xs font-bold px-4 py-1.5 mb-6 tracking-widest uppercase rounded-full shadow-lg shadow-emerald-900/20 font-thai"
                     >
                         {t.tagline}
                     </motion.div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-display tracking-tight leading-tight drop-shadow-lg font-thai">
+                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 font-display tracking-tight leading-[1.1] drop-shadow-2xl font-thai">
                         {t.title}
                     </h1>
-                    <p className="text-zinc-300 text-xl font-light mb-10 tracking-wide font-thai">
+                    <p className="text-zinc-200 text-lg md:text-xl font-light mb-10 tracking-wide font-thai max-w-xl mx-auto leading-relaxed">
                         {t.subtitle}
                     </p>
 
                     <button
                         onClick={() => navigate('/apply')}
-                        className="group bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 px-10 text-lg transition-all flex items-center justify-center gap-3 mx-auto shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] rounded-sm font-thai"
+                        className="group relative bg-amber-500 hover:bg-amber-400 text-zinc-900 font-bold py-4 px-10 text-lg flex items-center justify-center gap-3 mx-auto rounded-full font-thai shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_40px_rgba(245,158,11,0.6)] transition-all duration-300 transform hover:-translate-y-1"
                     >
                         {t.btn} <ArrowRight size={20} className="group-hover:translate-x-1 transition" />
+                        <div className="absolute inset-0 rounded-full border border-white/40"></div>
                     </button>
 
-                    <div className="mt-12 flex justify-center gap-8 border-t border-white/10 pt-8">
+                    <div className="mt-14 flex justify-center gap-8 border-t border-white/10 pt-8 opacity-90">
                         {t.stats.map((stat, i) => (
-                            <div key={i} className="text-center">
-                                <span className="block text-white font-bold text-sm md:text-base font-thai">{stat}</span>
+                            <div key={i} className="text-center px-4">
+                                <span className="block text-white font-bold text-sm md:text-base font-thai tracking-wide">{stat}</span>
                             </div>
                         ))}
                     </div>

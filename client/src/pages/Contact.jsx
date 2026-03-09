@@ -32,6 +32,19 @@ const Contact = () => {
                 message: "ข้อความ",
                 btn: "ส่งข้อความ"
             }
+        },
+        ZH: {
+            title: "联系我们",
+            subtitle: "我们很乐意听取您的意见。",
+            info_title: "获取联系",
+            address: "123 Sukhumvit Road, Muang District, Chonburi 20000",
+            hours: "周一 - 周五: 08:30 - 17:30",
+            form: {
+                name: "您的姓名",
+                email: "电子邮件",
+                message: "留言",
+                btn: "发送信息"
+            }
         }
     };
 

@@ -3,7 +3,7 @@ import { auth, db } from '../firebase';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { User, Calendar, Phone, Car, Save } from 'lucide-react';
+import { User, Calendar, Phone, Car, Save, Mail } from 'lucide-react';
 import { onAuthStateChanged } from 'firebase/auth';
 
 // Simplified Country List (Can be expanded)
@@ -29,6 +29,7 @@ const UserProfile = () => {
         surname: '',
         nickname: '',
         dob: '',
+        email: '',
         phoneCode: '+66', // Default
         phone: '',
         carsOwned: 0
@@ -52,7 +53,9 @@ const UserProfile = () => {
                     setFormData(prev => ({
                         ...prev,
                         name: names[0] || '',
-                        surname: names.slice(1).join(' ') || ''
+                        surname: names.slice(1).join(' ') || '',
+                        email: currentUser.email || '',
+                        phone: currentUser.phoneNumber ? currentUser.phoneNumber.replace('+66', '0').replace('+1', '') : ''
                     }));
 
                     // Attempt Auto-Detect Country (Simple Timezone heuristic for now)
@@ -89,9 +92,9 @@ const UserProfile = () => {
         try {
             await setDoc(doc(db, "users", user.uid), {
                 ...formData,
-                email: user.email,
+                email: formData.email || user.email || null,
                 updatedAt: new Date()
-            });
+            }, { merge: true });
             alert("Profile Saved!");
 
 
@@ -182,6 +185,21 @@ const UserProfile = () => {
                                     required
                                 />
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                        <label className="block text-zinc-400 text-sm mb-2 font-thai">อีเมล (Email Address)</label>
+                        <div className="relative">
+                            <Mail className="absolute left-3 top-3 text-emerald-500" size={18} />
+                            <input
+                                type="email"
+                                value={formData.email}
+                                onChange={e => setFormData({ ...formData, email: e.target.value })}
+                                className="input-sharp pl-10 pr-4 font-sans"
+                                placeholder="name@example.com"
+                            />
                         </div>
                     </div>
 

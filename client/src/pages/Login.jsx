@@ -3,13 +3,15 @@ import {
     signInWithPopup,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    RecaptchaVerifier,
+    signInWithPhoneNumber
 } from 'firebase/auth';
 import { auth, googleProvider, db } from '../firebase';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Lock, User, ArrowRight, Phone, AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, User, ArrowRight, Phone, AlertCircle, Eye, EyeOff, MessageSquare } from 'lucide-react';
 
 // Moved outside to prevent re-render focus loss
 const InputField = ({ icon: Icon, name, type = "text", placeholder, error, value, onChange }) => {
@@ -48,8 +50,11 @@ const InputField = ({ icon: Icon, name, type = "text", placeholder, error, value
 
 const Login = () => {
     const navigate = useNavigate();
-    const [mode, setMode] = useState('login');
+    const [authMethod, setAuthMethod] = useState('email'); // 'email' or 'phone'
+    const [mode, setMode] = useState('login'); // strictly for email
     const [isLoading, setIsLoading] = useState(false);
+    const [isOtpSent, setIsOtpSent] = useState(false);
+    const [verificationCode, setVerificationCode] = useState('');
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -57,6 +62,17 @@ const Login = () => {
         });
         return () => unsubscribe();
     }, [navigate]);
+
+    const setupRecaptcha = () => {
+        if (!window.recaptchaVerifier) {
+            window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+                'size': 'invisible',
+                'callback': () => {
+                    // reCAPTCHA solved
+                }
+            });
+        }
+    };
 
     const [formData, setFormData] = useState({
         email: '',
@@ -169,6 +185,70 @@ const Login = () => {
         }
     };
 
+    const handlePhoneAuth = async (e) => {
+        e.preventDefault();
+        if (!formData.phone.trim()) {
+            setErrors({ phone: "Phone number is required" });
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            setupRecaptcha();
+            const appVerifier = window.recaptchaVerifier;
+
+            // Format phone number to +66
+            let formattedPhone = formData.phone;
+            if (formattedPhone.startsWith('0')) {
+                formattedPhone = '+66' + formattedPhone.substring(1);
+            } else if (!formattedPhone.startsWith('+')) {
+                formattedPhone = '+' + formattedPhone;
+            }
+
+            const confirmationResult = await signInWithPhoneNumber(auth, formattedPhone, appVerifier);
+            window.confirmationResult = confirmationResult;
+            setIsOtpSent(true);
+            setIsLoading(false);
+        } catch (error) {
+            console.error("SMS Error:", error);
+            alert("Error sending SMS: " + error.message);
+            setIsLoading(false);
+            if (window.recaptchaVerifier) {
+                window.recaptchaVerifier.render().then(widgetId => {
+                    window.grecaptcha.reset(widgetId);
+                });
+            }
+        }
+    };
+
+    const handleVerifyOtp = async (e) => {
+        e.preventDefault();
+        if (!verificationCode.trim()) {
+            setErrors({ otp: "Verification code required" });
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            const result = await window.confirmationResult.confirm(verificationCode);
+            const user = result.user;
+
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (!userDoc.exists()) {
+                await setDoc(doc(db, "users", user.uid), {
+                    phone: formData.phone,
+                    createdAt: new Date(),
+                    carsOwned: 0
+                }, { merge: true });
+            }
+            await checkUserAndRedirect(user);
+        } catch (error) {
+            console.error("OTP Error:", error);
+            setErrors({ otp: "Invalid Code" });
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-zinc-900 relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('/bg2.jpg')] bg-cover bg-center opacity-30 blur-sm"></div>
@@ -182,26 +262,44 @@ const Login = () => {
                 <div className="text-center mb-8">
                     <img src="/logo.jpg" alt="Logo" className="h-12 w-auto mx-auto rounded-sm mb-4 shadow-lg" />
                     <h1 className="text-2xl font-bold text-white font-thai">
-                        {mode === 'login' ? 'ยินดีต้อนรับกลับ / Welcome Back' : 'สร้างบัญชีใหม่ / Create Account'}
+                        เข้าสู่ระบบ / Authentication
                     </h1>
                 </div>
 
                 <div className="flex p-1 bg-zinc-800/50 rounded-sm mb-6">
                     <button
-                        onClick={() => { setMode('login'); setErrors({}); }}
-                        className={`flex-1 py-2 text-sm font-bold rounded-sm transition-all ${mode === 'login' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-white'}`}
+                        onClick={() => { setAuthMethod('email'); setErrors({}); }}
+                        className={`flex-1 py-2 text-sm font-bold rounded-sm transition-all ${authMethod === 'email' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-white'}`}
                     >
-                        Log In
+                        Email
                     </button>
                     <button
-                        onClick={() => { setMode('signup'); setErrors({}); }}
-                        className={`flex-1 py-2 text-sm font-bold rounded-sm transition-all ${mode === 'signup' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-white'}`}
+                        onClick={() => { setAuthMethod('phone'); setErrors({}); }}
+                        className={`flex-1 py-2 text-sm font-bold rounded-sm transition-all ${authMethod === 'phone' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-white'}`}
                     >
-                        Sign Up
+                        Phone SMS
                     </button>
                 </div>
 
-                <form onSubmit={handleEmailAuth} className="space-y-4">
+                {authMethod === 'email' && (
+                    <div className="flex p-1 bg-zinc-800/50 rounded-sm mb-6 max-w-[200px] mx-auto">
+                        <button
+                            onClick={() => { setMode('login'); setErrors({}); }}
+                            className={`flex-1 py-1.5 text-xs font-bold rounded-sm transition-all ${mode === 'login' ? 'bg-zinc-600 text-white shadow-sm' : 'text-zinc-400 hover:text-white'}`}
+                        >
+                            Log In
+                        </button>
+                        <button
+                            onClick={() => { setMode('signup'); setErrors({}); }}
+                            className={`flex-1 py-1.5 text-xs font-bold rounded-sm transition-all ${mode === 'signup' ? 'bg-zinc-600 text-white shadow-sm' : 'text-zinc-400 hover:text-white'}`}
+                        >
+                            Sign Up
+                        </button>
+                    </div>
+                )}
+
+                {authMethod === 'email' ? (
+                    <form onSubmit={handleEmailAuth} className="space-y-4">
 
                     <AnimatePresence mode="popLayout">
                         {mode === 'signup' && (
@@ -305,6 +403,68 @@ const Login = () => {
                         {!isLoading && <ArrowRight size={18} />}
                     </button>
                 </form>
+                ) : (
+                    <form onSubmit={isOtpSent ? handleVerifyOtp : handlePhoneAuth} className="space-y-4">
+                        {!isOtpSent ? (
+                            <AnimatePresence mode="popLayout">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="space-y-4"
+                                >
+                                    <InputField
+                                        icon={Phone}
+                                        name="phone"
+                                        type="tel"
+                                        placeholder="Phone Number (e.g. 0812345678)"
+                                        error={errors.phone}
+                                        value={formData.phone}
+                                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                                    />
+                                    <button
+                                        type="submit"
+                                        disabled={isLoading}
+                                        className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-sm shadow-lg transition-transform hover:scale-[1.02] flex justify-center items-center gap-2 mt-4"
+                                    >
+                                        {isLoading ? 'Sending SMS...' : 'Send OTP Code'}
+                                        {!isLoading && <MessageSquare size={18} />}
+                                    </button>
+                                </motion.div>
+                            </AnimatePresence>
+                        ) : (
+                            <AnimatePresence mode="popLayout">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="space-y-4"
+                                >
+                                    <div className="text-center text-zinc-300 text-sm mb-2">
+                                        OTP sent to {formData.phone}
+                                    </div>
+                                    <InputField
+                                        icon={Lock}
+                                        name="otp"
+                                        type="text"
+                                        placeholder="Enter 6-digit Code"
+                                        error={errors.otp}
+                                        value={verificationCode}
+                                        onChange={(e) => setVerificationCode(e.target.value)}
+                                    />
+                                    <button
+                                        type="submit"
+                                        disabled={isLoading}
+                                        className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-sm shadow-lg transition-transform hover:scale-[1.02] flex justify-center items-center gap-2 mt-4"
+                                    >
+                                        {isLoading ? 'Verifying...' : 'Verify Code'}
+                                        {!isLoading && <ArrowRight size={18} />}
+                                    </button>
+                                </motion.div>
+                            </AnimatePresence>
+                        )}
+                    </form>
+                )}
+
+                <div id="recaptcha-container"></div>
 
                 <div className="relative my-8">
                     <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10"></div></div>

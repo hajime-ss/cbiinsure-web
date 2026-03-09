@@ -35,6 +35,20 @@ const Claims = () => {
                 { title: "ติดตามผล", desc: "รับการแจ้งเตือนสถานะการซ่อมแบบเรียลไทม์", icon: CheckCircle },
             ],
             forms_title: "ดาวน์โหลดแบบฟอร์ม"
+        },
+        ZH: {
+            title: "理赔中心",
+            subtitle: "在您遇到困难时，我们在这里提供帮助。",
+            emergency: "24/7 紧急救援",
+            call_btn: "拨打热线 1234",
+            steps_title: "如何理赔",
+            steps: [
+                { title: "报告事故", desc: "立即致电我们或使用LINE应用程序报告事故。", icon: Phone },
+                { title: "记录", desc: "拍下清晰的损坏照片，并收集对方的详细信息。", icon: Camera },
+                { title: "提交", desc: "在24小时内通过我们的门户网站或电子邮件发送文件。", icon: Send },
+                { title: "追踪", desc: "实时接收您的维修状态更新。", icon: CheckCircle },
+            ],
+            forms_title: "可下载表格"
         }
     };
 
