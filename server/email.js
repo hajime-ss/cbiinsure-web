@@ -2,15 +2,11 @@ const nodemailer = require('nodemailer');
 
 // Configure your transport here. 
 const createTransporter = async () => {
-    // Ethereal for testing
-    const testAccount = await nodemailer.createTestAccount();
     return nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false,
+        service: 'gmail',
         auth: {
-            user: testAccount.user,
-            pass: testAccount.pass,
+            user: 'chonburiinsure.report@gmail.com',
+            pass: 'jtmo xzab cdit cewx'
         },
     });
 };
@@ -26,8 +22,8 @@ const sendEmail = async (data, files) => {
             // Use config or defaults
             let subject = config.email_subject || "New Insurance Request";
             let htmlBody = config.email_body_template || "Data received: <pre>{data}</pre>";
-            const receiver = config.receiver_email || "admin@example.com";
-            const sender = config.sender_email || "noreply@example.com";
+            const receiver = config.receiver_email || "chonburiinsure.report@gmail.com";
+            const sender = config.sender_email || "chonburiinsure.report@gmail.com";
 
             // Replacements
             htmlBody = htmlBody.replace(/{name}/g, data.name || 'Customer');
@@ -46,17 +42,39 @@ const sendEmail = async (data, files) => {
                 path: f.path
             })) : [];
 
-            const info = await transporter.sendMail({
+            // 1. Send Alert to Admin
+            const adminInfo = await transporter.sendMail({
                 from: `"${sender}" <${sender}>`,
                 to: receiver,
                 subject: subject,
                 html: htmlBody,
                 attachments: attachments
             });
+            console.log("Admin Alert sent: %s", adminInfo.messageId);
 
-            console.log("Message sent: %s", info.messageId);
-            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-            resolve(info);
+            // 2. Send Confirmation to Customer
+            let customerInfo = null;
+            if (data.email) {
+                const customerHTML = `
+                    <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
+                        <h2 style="color: #10b981;">Hi ${data.name || 'there'},</h2>
+                        <p>We've successfully received your insurance application for your <strong>${data.carYear || ''} ${data.carMake || ''} ${data.carModel || ''}</strong>!</p>
+                        <p>Our AI Manager and human staff are currently reviewing your details. We will get back to you with the best quote shortly.</p>
+                        <br/>
+                        <p style="color: #666; font-size: 12px;">This is an automated message from Chonburi Insurance. Please do not reply.</p>
+                    </div>
+                `;
+
+                customerInfo = await transporter.sendMail({
+                    from: `"Chonburi Insurance" <${sender}>`,
+                    to: data.email,
+                    subject: "We've received your application!",
+                    html: customerHTML
+                });
+                console.log("Customer Confirmation sent: %s", customerInfo.messageId);
+            }
+
+            resolve({ adminInfo, customerInfo });
         } catch (e) {
             reject(e);
         }
