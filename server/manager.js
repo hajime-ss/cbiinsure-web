@@ -1,18 +1,18 @@
 const { db } = require('./firebase');
-const { collection, onSnapshot, query, where, updateDoc, doc, getDoc } = require('firebase/firestore');
 const { sendEmail } = require('./email');
 
 console.log("\n==============================================");
-console.log("   CHONBURI INSURANCE - MANAGER BOT V2.2");
+console.log("   CHONBURI INSURANCE - MANAGER BOT V2.2 (ADMIN)");
 console.log("   Status: ONLINE | Listening for submissions...");
 console.log("==============================================\n");
 
-// Listen for PENDING submissions
-const q = query(collection(db, "submissions"), where("status", "==", "PENDING"));
+// Listen for PENDING submissions using Admin SDK
+const submissionsRef = db.collection("submissions");
+const query = submissionsRef.where("status", "==", "PENDING");
 
-const unsubscribe = onSnapshot(q, (snapshot) => {
-    snapshot.docChanges().forEach(async (change) => {
-        if (change.type === "added") {
+const observer = query.onSnapshot(async (querySnapshot) => {
+    querySnapshot.docChanges().forEach(async (change) => {
+        if (change.type === 'added') {
             const data = change.doc.data();
             const docId = change.doc.id;
 
@@ -21,9 +21,9 @@ const unsubscribe = onSnapshot(q, (snapshot) => {
             console.log(`   Action: Processing email...`);
 
             try {
-                // Fetch dynamic configuration
-                const configSnap = await getDoc(doc(db, "config", "email"));
-                const config = configSnap.exists() ? configSnap.data() : {};
+                // Fetch dynamic configuration using Admin SDK
+                const configDoc = await db.collection("config").doc("email").get();
+                const config = configDoc.exists ? configDoc.data() : {};
 
                 // Merge data with config for the emailer
                 const emailData = {
@@ -34,8 +34,8 @@ const unsubscribe = onSnapshot(q, (snapshot) => {
                 // Send Email via Nodemailer 
                 await sendEmail(emailData, []); // Passing empty files array for now
 
-                // Update Status to SENT
-                await updateDoc(doc(db, "submissions", docId), {
+                // Update Status to SENT using Admin SDK
+                await submissionsRef.doc(docId).update({
                     status: "SENT",
                     processedAt: new Date()
                 });
@@ -44,15 +44,15 @@ const unsubscribe = onSnapshot(q, (snapshot) => {
                 console.log(`   ---`);
             } catch (error) {
                 console.error(`   ❌ FAIL: Error sending email`, error.message);
-                await updateDoc(doc(db, "submissions", docId), {
+                await submissionsRef.doc(docId).update({
                     status: "FAILED",
                     error: error.message
                 });
             }
         }
     });
-}, (error) => {
-    console.error("Error connecting to Firebase:", error);
+}, err => {
+    console.log(`Encountered error: ${err}`);
 });
 
 // Prevent script from exiting

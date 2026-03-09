@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const upload = require('./upload');
 const { sendEmail } = require('./email');
 const db = require('./database');
+require('./manager');
 
 dotenv.config();
 

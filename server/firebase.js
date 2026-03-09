@@ -1,17 +1,11 @@
-// Using the Web SDK for the Manager Bot (Node.js environment)
-const { initializeApp } = require("firebase/app");
-const { getFirestore } = require("firebase/firestore");
+const admin = require("firebase-admin");
+const serviceAccount = require("./serviceAccountKey.json");
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDJgnbMS00krwM196WAsDt2oV5hTkpWkuw",
-    authDomain: "carinsuranceapp-77b89.firebaseapp.com",
-    projectId: "carinsuranceapp-77b89",
-    storageBucket: "carinsuranceapp-77b89.firebasestorage.app",
-    messagingSenderId: "623005664357",
-    appId: "1:623005664357:web:ff58b01af118efa9a5b28c"
-};
+// Initialize Firebase Admin SDK
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = admin.firestore();
 
-module.exports = { db };
+module.exports = { db, admin };
