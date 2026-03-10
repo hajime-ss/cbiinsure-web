@@ -57,7 +57,7 @@
 
     /* Modern Sharp Input with animated focus */
     .input-sharp {
-        @apply w-full bg-white border border-zinc-300 px-4 py-3 text-zinc-900 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all duration-300 placeholder:text-zinc-400 rounded-sm hover:border-zinc-400;
+        @apply w-full bg-white border border-zinc-300 py-3 text-zinc-900 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all duration-300 placeholder:text-zinc-400 rounded-sm hover:border-zinc-400;
     }
 
     /* Sharp Button with detailed interaction */

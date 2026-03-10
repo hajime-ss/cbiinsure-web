@@ -192,12 +192,15 @@ const Layout = () => {
                         exit={{ opacity: 0, height: 0 }}
                         className="fixed top-16 left-0 w-full bg-zinc-900/95 backdrop-blur-xl border-b border-white/10 z-40 overflow-hidden md:hidden"
                     >
-                        <div className="flex flex-col p-6 space-y-6">
-                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold text-white font-thai">{t.home}</Link>
-                            <Link to="/insurance-info" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold text-white font-thai">{t.plans}</Link>
-                            <Link to="/why-us" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold text-white font-thai">{t.why}</Link>
+                        <div className="flex flex-col p-6 space-y-5">
+                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.home}</Link>
+                            <Link to="/insurance-info" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.plans}</Link>
+                            <Link to="/claims" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.claims}</Link>
+                            <Link to="/why-us" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.why}</Link>
+                            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.about}</Link>
+                            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.contact}</Link>
 
-                            <div className="pt-4 border-t border-white/10 flex flex-col gap-4">
+                            <div className="pt-3 border-t border-white/10 flex flex-col gap-4">
                                 {user ? (
                                     <>
                                         <div className="flex items-center gap-3">
@@ -224,10 +227,21 @@ const Layout = () => {
                                 )}
                             </div>
 
-                            <div className="flex justify-between items-center pt-4">
-                                <div className="flex gap-2">
-                                    <button onClick={() => setLang('EN')} className={`px-4 py-2 rounded-sm font-bold ${lang === 'EN' ? 'bg-emerald-600 text-white' : 'bg-zinc-800 text-zinc-400'}`}>EN</button>
-                                    <button onClick={() => setLang('TH')} className={`px-4 py-2 rounded-sm font-bold ${lang === 'TH' ? 'bg-emerald-600 text-white' : 'bg-zinc-800 text-zinc-400'}`}>TH</button>
+                            <div className="flex justify-between items-center pt-2">
+                                <div className="flex flex-wrap gap-2 w-full">
+                                    {[
+                                        { code: 'TH', label: '🇹🇭 TH' },
+                                        { code: 'EN', label: '🇬🇧 EN' },
+                                        { code: 'ZH', label: '🇨🇳 ZH' }
+                                    ].map((l) => (
+                                        <button 
+                                            key={l.code}
+                                            onClick={() => setLang(l.code)} 
+                                            className={`flex-1 min-w-[30%] px-2 py-2.5 rounded-sm font-bold text-sm ${lang === l.code ? 'bg-emerald-600 text-white' : 'bg-zinc-800 text-zinc-400'}`}
+                                        >
+                                            {l.label}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -247,14 +261,13 @@ const Layout = () => {
                 href="https://line.me/ti/p/~@chonburiins"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed bottom-6 right-6 z-50 bg-[#06C755] hover:bg-[#05b64c] text-white p-4 rounded-2xl shadow-lg hover:scale-110 transition duration-300 group flex items-center justify-center border-2 border-white/20"
+                className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[45] bg-[#06C755]/90 backdrop-blur-md hover:bg-[#05b64c] text-white p-3 md:p-4 rounded-full shadow-[0_8px_30px_rgba(6,199,85,0.4)] hover:scale-105 transition-all duration-300 group flex items-center justify-center border border-white/20"
             >
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" className="w-8 h-8" />
-                <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 whitespace-nowrap font-bold font-thai">
+                <MessageCircle size={24} className="md:w-7 md:h-7" />
+                <span className="max-w-0 overflow-hidden group-hover:max-w-[150px] group-hover:ml-2.5 transition-all duration-500 ease-out whitespace-nowrap font-bold font-thai text-sm md:text-base opacity-0 group-hover:opacity-100 hidden sm:block">
                     {t.chat}
                 </span>
             </a>
-            {/* Greeting Toast */}
             {/* Greeting Toast */}
             <AnimatePresence>
                 {user && showGreeting && (

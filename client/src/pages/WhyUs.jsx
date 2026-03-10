@@ -97,19 +97,20 @@ const WhyUs = () => {
     return (
         <div className="min-h-screen pb-20 pt-10">
             {/* Header */}
-            <div className="text-center pt-16 pb-12">
+            <div className="text-center pt-24 pb-16 bg-black/40 backdrop-blur-md border-b border-white/10 w-full mb-16 shadow-2xl">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
+                    className="max-w-4xl mx-auto px-4 text-center"
                 >
                     <div className="w-36 h-36 mx-auto mb-6 bg-white rounded-full p-1 shadow-2xl flex items-center justify-center overflow-hidden border-4 border-amber-500/20">
                         <img src="/logo_new.jpg" alt="Chonburi Insure" className="w-full h-full object-cover rounded-full" />
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 shadow-black drop-shadow-md font-display font-thai">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] font-display font-thai">
                         {t.title}
                     </h1>
-                    <p className="text-xl text-blue-100 font-thai">{t.subtitle}</p>
+                    <p className="text-xl text-blue-100 font-thai drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">{t.subtitle}</p>
                 </motion.div>
             </div>
 
