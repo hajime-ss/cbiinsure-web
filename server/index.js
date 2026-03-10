@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const upload = require('./upload');
 const { sendEmail } = require('./email');
+const { scrapeQuotes } = require('./scraper');
 const db = require('./database');
 require('./manager');
 
@@ -51,6 +52,26 @@ app.post('/api/submit', upload.array('files'), async (req, res) => {
     } catch (error) {
         console.error("Error processing request:", error);
         res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// Live Scraper API
+app.post('/api/quotes', async (req, res) => {
+    try {
+        const { year, brand, model, submodel } = req.body;
+        console.log(`Searching live quotes for: ${brand} ${model} (${year})`);
+        
+        // Call the proxy scraper
+        const result = await scrapeQuotes(req.body);
+        
+        if (result.success) {
+            res.json(result);
+        } else {
+            res.status(500).json(result);
+        }
+    } catch (error) {
+        console.error("Quotes API Error:", error);
+        res.status(500).json({ success: false, error: "Failed to fetch quotes via proxy." });
     }
 });
 

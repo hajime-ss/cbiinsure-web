@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { Facebook, Info, Globe, Shield, User, LogOut, Menu, X } from 'lucide-react';
+import { Facebook, Info, Globe, Shield, User, LogOut, Menu, X, MessageCircle } from 'lucide-react';
 import { auth } from '../firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import Footer from './Footer';

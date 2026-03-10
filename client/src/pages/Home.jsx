@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { ChevronRight, Shield, Zap, Star, ArrowRight } from 'lucide-react';
+import { ChevronRight, Shield, Zap, Star, Search, Calendar, Car, Tag } from 'lucide-react';
+import { years, getBrands, getModels, getSubmodels } from '../data/carData';
 
 const FadeIn = ({ children, delay = 0 }) => {
     const ref = useRef(null);
@@ -58,6 +59,17 @@ const Home = () => {
     const { scrollY } = useScroll();
     const yHero = useTransform(scrollY, [0, 500], [0, 150]);
 
+    // Form State
+    const [year, setYear] = useState('');
+    const [brand, setBrand] = useState('');
+    const [model, setModel] = useState('');
+    const [submodel, setSubmodel] = useState('');
+
+    const handleSearch = () => {
+        if (!year || !brand || !model || !submodel) return alert('Please complete all fields.');
+        navigate('/quotes', { state: { year, brand, model, submodel } });
+    };
+
     const texts = {
         EN: {
             tagline: "#1 IN CHONBURI",
@@ -107,19 +119,93 @@ const Home = () => {
                         {t.tagline}
                     </motion.div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-display tracking-tight leading-tight drop-shadow-lg font-thai">
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-8 font-display tracking-tight leading-tight drop-shadow-lg font-thai">
                         {t.title}
                     </h1>
-                    <p className="text-zinc-300 text-xl font-light mb-10 tracking-wide font-thai">
-                        {t.subtitle}
-                    </p>
 
-                    <button
-                        onClick={() => navigate('/apply')}
-                        className="group bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 px-10 text-lg transition-all flex items-center justify-center gap-3 mx-auto shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] rounded-sm font-thai"
+                    {/* Interactive Quote Form Box */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 }}
+                        className="bg-white/10 backdrop-blur-xl p-6 rounded-lg border border-white/20 shadow-2xl text-left"
                     >
-                        {t.btn} <ArrowRight size={20} className="group-hover:translate-x-1 transition" />
-                    </button>
+                        <h2 className="text-white font-bold text-xl mb-4 font-thai flex items-center gap-2">
+                            <Search size={20} className="text-emerald-400" />
+                            {lang === 'TH' ? 'เช็คราคาประกันรถยนต์' : 'Check Car Insurance Prices'}
+                        </h2>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            {/* 1. Year */}
+                            <div className="relative">
+                                <label className="block text-zinc-300 text-xs font-bold mb-1 ml-1 font-thai">{lang === 'TH' ? '1. ปีจดทะเบียน' : '1. Year Registered'}</label>
+                                <div className="relative">
+                                    <Calendar className="absolute left-3 top-3.5 text-emerald-600" size={18} />
+                                    <select 
+                                        className="w-full bg-white text-zinc-900 font-bold pl-10 pr-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer"
+                                        value={year}
+                                        onChange={(e) => { setYear(e.target.value); setBrand(''); setModel(''); setSubmodel(''); }}
+                                    >
+                                        <option value="" disabled>{lang === 'TH' ? 'เลือกปีรถยนต์' : 'Select Year'}</option>
+                                        {years.map(y => <option key={y} value={y}>{y}</option>)}
+                                    </select>
+                                </div>
+                            </div>
+
+                            {/* 2. Brand */}
+                            <div className="relative">
+                                <label className="block text-zinc-300 text-xs font-bold mb-1 ml-1 font-thai">{lang === 'TH' ? '2. ยี่ห้อรถ' : '2. Car Brand'}</label>
+                                <div className="relative">
+                                    <Car className={`absolute left-3 top-3.5 ${!year ? 'text-zinc-400' : 'text-emerald-600'}`} size={18} />
+                                    <select 
+                                        className="w-full bg-white text-zinc-900 font-bold pl-10 pr-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
+                                        value={brand}
+                                        onChange={(e) => { setBrand(e.target.value); setModel(''); setSubmodel(''); }}
+                                        disabled={!year}
+                                    >
+                                        <option value="" disabled>{lang === 'TH' ? 'เลือกยี่ห้อรถ' : 'Select Brand'}</option>
+                                        {getBrands().map(b => <option key={b} value={b}>{b}</option>)}
+                                    </select>
+                                </div>
+                            </div>
+
+                            {/* 3. Model */}
+                            <div className="relative">
+                                <label className="block text-zinc-300 text-xs font-bold mb-1 ml-1 font-thai">{lang === 'TH' ? '3. รุ่นรถ' : '3. Car Model'}</label>
+                                <select 
+                                    className="w-full bg-white text-zinc-900 font-bold px-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
+                                    value={model}
+                                    onChange={(e) => { setModel(e.target.value); setSubmodel(''); }}
+                                    disabled={!brand}
+                                >
+                                    <option value="" disabled>{lang === 'TH' ? 'เลือกรุ่นรถ' : 'Select Model'}</option>
+                                    {getModels(brand).map(m => <option key={m} value={m}>{m}</option>)}
+                                </select>
+                            </div>
+
+                            {/* 4. Submodel */}
+                            <div className="relative">
+                                <label className="block text-zinc-300 text-xs font-bold mb-1 ml-1 font-thai">{lang === 'TH' ? '4. รุ่นย่อย' : '4. Sub-Model'}</label>
+                                <select 
+                                    className="w-full bg-white text-zinc-900 font-bold px-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
+                                    value={submodel}
+                                    onChange={(e) => setSubmodel(e.target.value)}
+                                    disabled={!model}
+                                >
+                                    <option value="" disabled>{lang === 'TH' ? 'เลือกรุ่นย่อย' : 'Select Sub-model'}</option>
+                                    {getSubmodels(brand, model).map(s => <option key={s} value={s}>{s}</option>)}
+                                </select>
+                            </div>
+                        </div>
+
+                        <button
+                            onClick={handleSearch}
+                            disabled={!year || !brand || !model || !submodel}
+                            className="w-full bg-amber-500 hover:bg-amber-400 disabled:bg-zinc-500 disabled:text-zinc-300 disabled:cursor-not-allowed text-black font-bold py-4 px-6 text-lg transition-all rounded-sm font-thai shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
+                        >
+                            {lang === 'TH' ? 'เปรียบเทียบราคาเลย!' : 'COMPARE PRICES NOW!'}
+                        </button>
+                    </motion.div>
 
                     <div className="mt-12 flex justify-center gap-8 border-t border-white/10 pt-8">
                         {t.stats.map((stat, i) => (

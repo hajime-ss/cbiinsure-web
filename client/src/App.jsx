@@ -5,6 +5,7 @@ import CustomerForm from './pages/CustomerForm';
 import AdminDashboard from './pages/AdminDashboard';
 import Home from './pages/Home';
 import WhyUs from './pages/WhyUs';
+import QuoteResults from './pages/QuoteResults';
 
 import InsuranceInfo from './pages/InsuranceInfo';
 import Login from './pages/Login';
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/quotes" element={<QuoteResults />} />
           <Route path="/insurance-info" element={<InsuranceInfo />} />
           <Route path="/apply" element={<CustomerForm />} />
           <Route path="/admin" element={<AdminDashboard />} />
