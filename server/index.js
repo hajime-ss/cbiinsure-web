@@ -57,6 +57,11 @@ app.get('/', (req, res) => {
     res.send('Car Insurance API Running');
 });
 
+// Render Free Tier Keep-Alive Endpoint
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'UP', timestamp: new Date().toISOString() });
+});
+
 // Admin Auth Middleware
 const verifyAdmin = (req, res, next) => {
     const apiKey = req.headers['x-admin-api-key'];
