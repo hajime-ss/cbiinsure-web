@@ -1,0 +1,116 @@
+Analyzing .panel.panel-default
+
+
+--- Panel 0 ---
+
+                            <div class="panel-heading panel-heading-link">
+                                <h3>
+                                    <a data-toggle="collapse" data-parent="#group_filter" href="#group_filter" class="collapsed" style="color: #ffffff; background-color: #0099DA;">
+                                        <i class="fa fa-filter"></i>กรองข้อมูล
+										<span id="ContentPlaceHolder_tmpPathCheck" class="hidden"></span>
+                                    </a>
+                                </h3>
+                            </div>
+
+                            <div id="group_filter" class="panel-collapse collapse">
+                                <h4><i class="fa fa-align-justify"></i>ประเภทประกัน</h4>
+                                <ul class="portfolio-cols">
+                                    <li>
+                                        <a id="ContentPlaceHolder_Potype1" class="active" href="HONDA-CIVIC-%E0%B8%9B%E0%B8%B52024-%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%AB%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B9%81%E0%B8%A3%E0%B8%81-id632-n-n">ชั้น 1</a></li>
+                                    <li>
+                                        <a id="ContentPlaceHolder_Potype2P" href="../%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B8%A3%E0%B8%96%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C-2%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%AA/HONDA-CIVIC-%E0%B8%9B%E0%B8%B52024-%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%AB%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B9%81%E0%B8%A3%E0%B8%81-id632-n-n">ชั้น 2+</a></li>
+                                    <li>
+                                        <a id="ContentPlaceHolder_Potype3P" href="../%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B8%A3%E0%B8%96%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C-3%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%AA/HONDA-CIVIC-%E0%B8%9B%E0%B8%B52024-%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%AB%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B9%81%E0%B8%A3%E0%B8%81-id632-n-n">ชั้น 3+</a></li>
+                                    <li>
+                                        <a id="ContentPlaceHolder_Potype3" href="../%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B8%A3%E0%B8%96%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C-%E0%B8%8A%E0%B8%B1%E0%B9%89%E0%B8%993/HONDA-CIVIC-%E0%B8%9B%E0%B8%B52024-%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B9%88%E0%B8%B2%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%AB%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B9%81%E0%B8%A3%E0%B8%81-id632-n-n">ชั้น 3</a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                      
+
+--- Panel 1 ---
+
+                                                        <div class="panel-heading panel-heading-link calDetail">
+                                                            <a data-toggle="collapse" data-parent="#cal_detail" href="#cal_detail" class="collapsed">ส่วนลดต่าง ๆ</a>
+                                                        </div>
+                                                        <div id="cal_detail" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <div class="form-horizontal">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-sm-5" for="email">ส่วนลดระบุชื่อ:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <select name="ctl00$ContentPlaceHolder$ADDDRIVER" id="ContentPlaceHolder_ADDDRIVER" class="form-control">
+		<option value="no">ไม่ระบุชื่อ</option>
+		<option value="yes">ระบุชื่อ</option>
+
+	</select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="div_rabu" style="display: none">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-sm-5" for="email">ระบุอายุผู้ขับขี่ 1:</label>
+                                                                            <div class="col-sm-7">
+                                                                                <input name="ctl00$ContentPlaceHolder$DRVAGE1" type="text" id="ContentPlaceHolder_DRVAGE1" class="form-control" placeholder="เฉพาะตัวเลข">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-sm-5" for="email">ระบุอายุผู้ขับขี่ 2:</label>
+                                                                            <div class="col-sm-7">
+                                                                                <input name="ctl00$ContentPlaceHolder$DRVAGE2" type="text" id="ContentPlaceHolder_DRVAGE2" class="form-control" placeholder="เฉพาะตัวเลข">
+                                                                            </div>
+                                                                        </div>
+                           
+
+Analyzing rows with price
+
+
+--- Row 0 ---
+
+														<div class="col-xs-12 col-sm-7 col-sm-push-1">
+															<div class="row">
+																<div class="col-xs-3" style="padding-top: 5px;">
+																	<div><span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_FIX_0" class="FIX1">ห้าง</span></div>
+																	<span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_RATING_0" class="RATING"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></span>
+																	<img id="ContentPlaceHolder_PackageGroup_rptPackageList_2_img_voucher_0" class="img-responsive">
+																</div>
+																<div class="col-xs-9">
+																	<div><span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_PACKNAMECUS_0" class="PACKNAMECUS">VIB 1 Single Rate 2-5ปี X34</span></div>
+																	<span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_OD_0" class="OD">ทุน ฿<span>730,000</span></span>
+																	
+                                                                    <div></div>
+                                                                    
+                                                                    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Note21276" style="font-size:1em; padding: 0px 5px;">
+                                                                        หมายเหตุ/เงื่อนไข
+                                                                    </button>
+                                                                    
+                                                                    
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl00$Hid_qsub_vmi_NETPREMIUM" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_NETPREMIUM_0" value="28204.76">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl00$Hid_qsub_vmi_PREMIUM" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_PREMIUM_0" value="30300">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl00$Hid_qsub_vmi_INS" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_INS_0" value="VBI">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl00$Hid_qsub_vmi_INSID" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_INSID_0" value="2037">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl00$Hid_qsub_vmi_POTYPE" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_
+
+--- Row 1 ---
+
+														<div class="col-xs-12 col-sm-7 col-sm-push-1">
+															<div class="row">
+																<div class="col-xs-3" style="padding-top: 5px;">
+																	<div><span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_FIX_1" class="FIX2">อู่</span></div>
+																	<span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_RATING_1" class="RATING"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></span>
+																	<img id="ContentPlaceHolder_PackageGroup_rptPackageList_2_img_voucher_1" class="img-responsive">
+																</div>
+																<div class="col-xs-9">
+																	<div><span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_PACKNAMECUS_1" class="PACKNAMECUS">VIB 1 Single Rate 2-15 X37</span></div>
+																	<span id="ContentPlaceHolder_PackageGroup_rptPackageList_2_OD_1" class="OD">ทุน ฿<span>730,000</span></span>
+																	
+                                                                    <div></div>
+                                                                    
+                                                                    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#Note21093" style="font-size:1em; padding: 0px 5px;">
+                                                                        หมายเหตุ/เงื่อนไข
+                                                                    </button>
+                                                                    
+                                                                    
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl01$Hid_qsub_vmi_NETPREMIUM" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_NETPREMIUM_1" value="19547.17">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl01$Hid_qsub_vmi_PREMIUM" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_PREMIUM_1" value="21000">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl01$Hid_qsub_vmi_INS" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_INS_1" value="VBI">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl01$Hid_qsub_vmi_INSID" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_INSID_1" value="2037">
+                                                                    <input type="hidden" name="ctl00$ContentPlaceHolder$PackageGroup$ctl02$rptPackageList$ctl01$Hid_qsub_vmi_POTYPE" id="ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_PO

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "quote_6",
+    "company": "ไทยวิวัฒน์ประกันภัย",
+    "companyTh": "ไทยวิวัฒน์ประกันภัย",
+    "companyEn": "Thaivivat Insurance",
+    "companyAbbr": "TVI",
+    "companyLogo": "/logos/TVI.png",
+    "price": 7500,
+    "type": "ชั้น 1",
+    "garage": "อู่",
+    "sumInsured": "100,000",
+    "deductible": "3,000",
+    "province": "ทั้งหมด",
+    "installments": {
+      "0": true,
+      "available": true,
+      "months": 10
+    },
+    "coverage": {
+      "life": "1,000,000",
+      "medical": "200,000",
+      "property": "2,500,000"
+    }
+  },
+  {
+    "id": "quote_7",
+    "company": "ไทยวิวัฒน์ประกันภัย",
+    "companyTh": "ไทยวิวัฒน์ประกันภัย",
+    "companyEn": "Thaivivat Insurance",
+    "companyAbbr": "TVI",
+    "companyLogo": "/logos/TVI.png",
+    "price": 9500,
+    "type": "ชั้น 1",
+    "garage": "อู่",
+    "sumInsured": "200,000",
+    "deductible": "3,000",
+    "province": "ทั้งหมด",
+    "installments": {
+      "0": true,
+      "available": true,
+      "months": 10
+    },
+    "coverage": {
+      "life": "1,000,000",
+      "medical": "200,000",
+      "property": "2,500,000"
+    }
+  }
+]

@@ -1,0 +1,368 @@
+[
+  {
+    "packageName": "VIB 1 Single Rate 2-5ปี X34",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "VIB 1 Single Rate 2-15 X37",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "VIB 1 Single Rate 2-5ปี X35",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "BKI 1 เลือกทุนเองได้ A (รถชนรถไม่เก็บ)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "BKI 1 เลือกทุนเองได้ A (รถชนรถไม่เก็บ)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "BKI 1 เลือกทุนเองได้ A (รถชนรถไม่เก็บ)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "BKI 1 Region ภาคตะวันออก",
+    "province": "ต่างจังหวัด",
+    "isBKK": false,
+    "isUPC": true
+  },
+  {
+    "packageName": "BKI 1 อุ่นใจวัยเก๋า (55-75ปี) ตะวันออก",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "BKI 1 Region กทม. ปริมณฑล",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "BKI 1 อุ่นใจวัยเก๋า (55-75ปี) กทม. ปริมณฑล",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "ISV 1 Smart Save Plan G3",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TMSTH 1 Sedan Sabai D DG",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TMSTH 1 SEDAN SABAI",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "SOMPO 1 Single Rate ตจว.",
+    "province": "ต่างจังหวัด",
+    "isBKK": false,
+    "isUPC": true
+  },
+  {
+    "packageName": "SOMPO 1 Single Rate กทม.",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "SOMPO 1 Single Rate ตจว.",
+    "province": "ต่างจังหวัด",
+    "isBKK": false,
+    "isUPC": true
+  },
+  {
+    "packageName": "SOMPO 1 Single Rate กทม.",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "TVI 1 One Save",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TVI 1 New BUDGET",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TVI 1 New BUDGET",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TVI 1 One Save",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "CHB 1 Smart Drive V2 ภาคกลาง เหนือ อีสาน ตะวันออก",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "CHB 1 Smart Drive V2 กรุงเทพ และปริมณฑล",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "CHB 1 ANC Smart Drive ภาคกลาง เหนือ อีสาน ตะวันออก",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "CHB 1 ANC Smart Drive กรุงเทพ และปริมณฑล",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "CHB 1 Smart Drive V2 ภาคกลาง เหนือ อีสาน ตะวันออก",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "CHB 1 Smart Drive V2 กรุงเทพ และปริมณฑล",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "AAGI 1 SingleRate (UPC)",
+    "province": "ต่างจังหวัด",
+    "isBKK": false,
+    "isUPC": true
+  },
+  {
+    "packageName": "AAGI 1 SingleRate (BKK)",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "AAGI 1 SingleRate (UPC)",
+    "province": "ต่างจังหวัด",
+    "isBKK": false,
+    "isUPC": true
+  },
+  {
+    "packageName": "AAGI 1 SingleRate (BKK)",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  },
+  {
+    "packageName": "AIOI 1 Single Rate DG",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "AIOI 1 Single Rate GG",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 Best Drive DG G3",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 Rainbow G3 DG",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 อัพทูไมล์ (5,000 ก.ม.)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 อัพทูไมล์ (8,000 ก.ม.)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 อัพทูไมล์ (10,000 ก.ม.)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 Best Drive GG G3",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 Rainbow G3 GG",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "TIP 1 Premium Garage Plus G3",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MSIG 1 ULTRA SAVE",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MTI 1 รถบ้านใช้น้อย C10 (5,000 ก.ม.)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MTI 1 รถบ้านใช้น้อย C10 (7,500 ก.ม.)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MTI 1 รถบ้านใช้น้อย C10 (10,000 ก.ม.)",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "MTI 1 Easy G3 GG",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "DVS 1 SUPER SAVE MINI",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "DVS 1 SUPER SAVE MINI",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "DVS 1 SUPER SAVE MINI",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "DVS 1 SUPER SAVE MINI",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "BUI 1 G3",
+    "province": "ทั้งหมด",
+    "isBKK": false,
+    "isUPC": false
+  },
+  {
+    "packageName": "AXA 1 25PD08 GG (ตจว.)",
+    "province": "ต่างจังหวัด",
+    "isBKK": false,
+    "isUPC": true
+  },
+  {
+    "packageName": "AXA 1 25PD08 GG (กทม.และปริมณฑล)",
+    "province": "กทม.และปริมณฑล",
+    "isBKK": true,
+    "isUPC": false
+  }
+]

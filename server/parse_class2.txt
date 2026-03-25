@@ -1,0 +1,7 @@
+--- Packages Found ---
+Found "วิริยะประกันภัย" in tag option, classes: undefined
+Parent tree HTML:  <h3 class="text-center" style="color: #000;"> <b>เลือกแพ็คเกจ พ.ร.บ.</b> </h3> <div class="form-group"> <label for="exampleFormControlSelect1">เลือกบริษัทประกัน *</label> <select class="form-control" id="DdlCmiCP" style="height: 45px;"> <option value="2037">วิริยะประกันภัย</option> <option value="2
+
+Found "วิริยะประกันภัย" in tag span, classes: CPNAME
+Parent tree HTML:  <div class="panel-heading panel-heading-link"> <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#VBI"> <img id="ContentPlaceHolder_PackageGroup_INS_3" class="img-circle" src="../images/ins/VBI.png?v=20260324164842"> <span id="ContentPlaceHolder_PackageGroup_CPNAME_3" class
+

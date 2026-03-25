@@ -1,0 +1,5 @@
+--- Elements with ชั้น ---
+Tag: a, ID: ContentPlaceHolder_Potype1, Class: active, Text: ชั้น 1
+Tag: a, ID: ContentPlaceHolder_Potype2P, Class: , Text: ชั้น 2+
+Tag: a, ID: ContentPlaceHolder_Potype3P, Class: , Text: ชั้น 3+
+Tag: a, ID: ContentPlaceHolder_Potype3, Class: , Text: ชั้น 3

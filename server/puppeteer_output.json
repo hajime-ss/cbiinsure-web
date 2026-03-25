@@ -1,0 +1,667 @@
+{
+  "success": true,
+  "status": "Live quotes extracted successfully via Puppeteer",
+  "count": 33,
+  "data": [
+    {
+      "id": "quote_0",
+      "company": "วิริยะประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "30,300",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_1",
+      "company": "วิริยะประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "21,000",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_2",
+      "company": "วิริยะประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "22,000",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_3",
+      "company": "กรุงเทพประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "21,510",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_4",
+      "company": "กรุงเทพประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "22,010",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_5",
+      "company": "ISV",
+      "companyLogo": "/logos/default.png",
+      "price": "17,577",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_6",
+      "company": "TMSTH",
+      "companyLogo": "/logos/default.png",
+      "price": "28,000",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_7",
+      "company": "TMSTH",
+      "companyLogo": "/logos/default.png",
+      "price": "21,500",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_8",
+      "company": "SPI",
+      "companyLogo": "/logos/default.png",
+      "price": "30,243",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_9",
+      "company": "SPI",
+      "companyLogo": "/logos/default.png",
+      "price": "22,287",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_10",
+      "company": "TVI",
+      "companyLogo": "/logos/default.png",
+      "price": "30,700",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_11",
+      "company": "TVI",
+      "companyLogo": "/logos/default.png",
+      "price": "16,500",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_12",
+      "company": "AIOI",
+      "companyLogo": "/logos/default.png",
+      "price": "31,800",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_13",
+      "company": "AIOI",
+      "companyLogo": "/logos/default.png",
+      "price": "16,400",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_14",
+      "company": "CHB",
+      "companyLogo": "/logos/default.png",
+      "price": "33,100",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_15",
+      "company": "CHB",
+      "companyLogo": "/logos/default.png",
+      "price": "20,430",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_16",
+      "company": "CHB",
+      "companyLogo": "/logos/default.png",
+      "price": "22,700",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_17",
+      "company": "AZAY",
+      "companyLogo": "/logos/default.png",
+      "price": "34,000",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_18",
+      "company": "AZAY",
+      "companyLogo": "/logos/default.png",
+      "price": "20,501",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_19",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "35,900",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_20",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "36,400",
+      "type": "ชั้น 1",
+      "garage": "ห้าง",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_21",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "8,200",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_22",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "10,800",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_23",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "13,600",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_24",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "21,150",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_25",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "21,650",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_26",
+      "company": "ทิพยประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "23,350",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_27",
+      "company": "MTI",
+      "companyLogo": "/logos/default.png",
+      "price": "8,000",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_28",
+      "company": "MTI",
+      "companyLogo": "/logos/default.png",
+      "price": "10,800",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_29",
+      "company": "MTI",
+      "companyLogo": "/logos/default.png",
+      "price": "13,500",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_30",
+      "company": "MTI",
+      "companyLogo": "/logos/default.png",
+      "price": "22,100",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_31",
+      "company": "บางกอกสหประกันภัย",
+      "companyLogo": "/logos/default.png",
+      "price": "16,500",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    },
+    {
+      "id": "quote_32",
+      "company": "AXA",
+      "companyLogo": "/logos/default.png",
+      "price": "18,999",
+      "type": "ชั้น 1",
+      "garage": "อู่",
+      "sumInsured": "730,000",
+      "deductible": "ไม่มีค่าเสียหายส่วนแรก",
+      "installments": {
+        "0": true,
+        "available": true,
+        "months": 10
+      },
+      "coverage": {
+        "life": "1,000,000",
+        "medical": "200,000",
+        "property": "2,500,000"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+--- Class Tabs ---
+
+--- Dropdowns (Select) ---
+ID: DdlCmiCP | Name: undefined
+  Options (first 5): วิริยะประกันภัย (2037), ไทยไพบูลย์ประกันภัย (2018)
+ID: DdlCmiPrice | Name: undefined
+  Options (first 5): ราคาส่วนลด 599 บาท (ค่าคอม 10%) (1), ราคาปกติ 645.21 บาท (0)
+ID: ContentPlaceHolder_ddlOD | Name: ctl00$ContentPlaceHolder$ddlOD
+  Options (first 5): ทุนทั้งหมด (0), 270,000 (270000), 280,000 (280000), 290,000 (290000), 300,000 (300000)
+ID: ContentPlaceHolder_ADDDRIVER | Name: ctl00$ContentPlaceHolder$ADDDRIVER
+  Options (first 5): ไม่ระบุชื่อ (no), ระบุชื่อ (yes)

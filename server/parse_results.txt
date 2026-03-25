@@ -1,0 +1,19 @@
+--- Hidden Inputs ---
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_NETPREMIUM_0 : 28204.76
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_PREMIUM_0 : 30300
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_INS_0 : VBI
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_INSID_0 : 2037
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_POTYPE_0 : ป1
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_POTYPEID_0 : 221
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_IDPACK_0 : 21276
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_PACKNAME_0 : VIB 1 Single Rate 2-5ปี X34
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_resultType_0 : json
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_sp_dis_0 : 0
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_OD_0 : 730000
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_FIRE_0 : 730000
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_qsub_vmi_FLOOD_0 : 730000
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_offer_price_0 : 30300
+ContentPlaceHolder_PackageGroup_rptPackageList_2_Hid_offer_discount_0 : 0
+
+--- Text within row ---
+ ห้าง VIB 1 Single Rate 2-5ปี X34 ทุน ฿730,000 หมายเหตุ/เงื่อนไข + ฿30,300฿30,300 

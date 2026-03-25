@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { ChevronRight, Shield, Zap, Star, Search, Calendar, Car, Tag } from 'lucide-react';
-import { years, getBrands, getModels, getSubmodels } from '../data/carData';
+import { ChevronRight, Shield, Zap, Star, Search, Calendar, Car, Tag, Loader2 } from 'lucide-react';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const FadeIn = ({ children, delay = 0 }) => {
     const ref = useRef(null);
@@ -59,14 +59,105 @@ const Home = () => {
     const { scrollY } = useScroll();
     const yHero = useTransform(scrollY, [0, 500], [0, 150]);
 
-    // Form State
+    // Form State for User Selections
     const [year, setYear] = useState('');
     const [brand, setBrand] = useState('');
     const [model, setModel] = useState('');
     const [submodel, setSubmodel] = useState('');
 
+    // Dynamic Options from API Proxy
+    const [yearsList, setYearsList] = useState([]);
+    const [brandsList, setBrandsList] = useState([]);
+    const [modelsList, setModelsList] = useState([]);
+    const [submodelsList, setSubmodelsList] = useState([]);
+    const [loadingDropdown, setLoadingDropdown] = useState(false);
+
+    // Initial Load: Years
+    useEffect(() => {
+        const fetchYears = async () => {
+            setLoadingDropdown(true);
+            try {
+                const res = await fetch(`${API_URL}/api/cars/dropdown`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ step: 'years' })
+                });
+                const { data } = await res.json();
+                if (data) setYearsList(data);
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setLoadingDropdown(false);
+            }
+        };
+        fetchYears();
+    }, []);
+
+    // When Year changes -> Fetch Brands
+    useEffect(() => {
+        if (!year) return;
+        const fetchBrands = async () => {
+            setLoadingDropdown(true);
+            try {
+                const res = await fetch(`${API_URL}/api/cars/dropdown`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ step: 'brands', year })
+                });
+                const { data } = await res.json();
+                if (data) setBrandsList(data);
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setLoadingDropdown(false);
+            }
+        };
+        fetchBrands();
+    }, [year]);
+
+    // When Brand changes -> Fetch Models
+    useEffect(() => {
+        if (!brand || !year) return;
+        const fetchModels = async () => {
+            setLoadingDropdown(true);
+            try {
+                const res = await fetch(`${API_URL}/api/cars/dropdown`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ step: 'models', year, brand })
+                });
+                const { data } = await res.json();
+                if (data) setModelsList(data);
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setLoadingDropdown(false);
+            }
+        };
+        fetchModels();
+    }, [brand, year]);
+
+    // When Model changes -> Fetch Submodels
+    useEffect(() => {
+        if (!model || !brand || !year) return;
+        const fetchSubmodels = async () => {
+            setLoadingDropdown(true);
+            try {
+                const res = await fetch(`${API_URL}/api/cars/dropdown`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ step: 'submodels', year, brand, model })
+                });
+                const { data } = await res.json();
+                if (data) setSubmodelsList(data);
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setLoadingDropdown(false);
+            }
+        };
+        fetchSubmodels();
+    }, [model, brand, year]);
+
     const handleSearch = () => {
         if (!year || !brand || !model || !submodel) return alert('Please complete all fields.');
+        // We pass the exact 'val' (which is the ANC ID) for pricing later
         navigate('/quotes', { state: { year, brand, model, submodel } });
     };
 
@@ -142,13 +233,15 @@ const Home = () => {
                                 <div className="relative">
                                     <Calendar className="absolute left-3 top-3.5 text-emerald-600" size={18} />
                                     <select 
-                                        className="w-full bg-white text-zinc-900 font-bold pl-10 pr-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer"
+                                        className="w-full bg-white text-zinc-900 font-bold pl-10 pr-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200"
                                         value={year}
+                                        disabled={loadingDropdown || yearsList.length === 0}
                                         onChange={(e) => { setYear(e.target.value); setBrand(''); setModel(''); setSubmodel(''); }}
                                     >
                                         <option value="" disabled>{lang === 'TH' ? 'เลือกปีรถยนต์' : 'Select Year'}</option>
-                                        {years.map(y => <option key={y} value={y}>{y}</option>)}
+                                        {yearsList.map(y => <option key={y.val} value={y.val}>{y.text}</option>)}
                                     </select>
+                                    {loadingDropdown && !yearsList.length && <Loader2 className="absolute right-3 top-3.5 text-emerald-500 animate-spin" size={18} />}
                                 </div>
                             </div>
 
@@ -161,40 +254,47 @@ const Home = () => {
                                         className="w-full bg-white text-zinc-900 font-bold pl-10 pr-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
                                         value={brand}
                                         onChange={(e) => { setBrand(e.target.value); setModel(''); setSubmodel(''); }}
-                                        disabled={!year}
+                                        disabled={!year || loadingDropdown}
                                     >
                                         <option value="" disabled>{lang === 'TH' ? 'เลือกยี่ห้อรถ' : 'Select Brand'}</option>
-                                        {getBrands().map(b => <option key={b} value={b}>{b}</option>)}
+                                        {brandsList.map(b => <option key={b.val} value={b.val}>{b.text}</option>)}
                                     </select>
+                                    {loadingDropdown && !!year && !brandsList.length && <Loader2 className="absolute right-3 top-3.5 text-emerald-500 animate-spin" size={18} />}
                                 </div>
                             </div>
 
                             {/* 3. Model */}
                             <div className="relative">
                                 <label className="block text-zinc-300 text-xs font-bold mb-1 ml-1 font-thai">{lang === 'TH' ? '3. รุ่นรถ' : '3. Car Model'}</label>
-                                <select 
-                                    className="w-full bg-white text-zinc-900 font-bold px-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
-                                    value={model}
-                                    onChange={(e) => { setModel(e.target.value); setSubmodel(''); }}
-                                    disabled={!brand}
-                                >
-                                    <option value="" disabled>{lang === 'TH' ? 'เลือกรุ่นรถ' : 'Select Model'}</option>
-                                    {getModels(brand).map(m => <option key={m} value={m}>{m}</option>)}
-                                </select>
+                                <div className="relative">
+                                    <select 
+                                        className="w-full bg-white text-zinc-900 font-bold px-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
+                                        value={model}
+                                        onChange={(e) => { setModel(e.target.value); setSubmodel(''); }}
+                                        disabled={!brand || loadingDropdown}
+                                    >
+                                        <option value="" disabled>{lang === 'TH' ? 'เลือกรุ่นรถ' : 'Select Model'}</option>
+                                        {modelsList.map(m => <option key={m.val} value={m.val}>{m.text}</option>)}
+                                    </select>
+                                    {loadingDropdown && !!brand && !modelsList.length && <Loader2 className="absolute right-3 top-3.5 text-emerald-500 animate-spin" size={18} />}
+                                </div>
                             </div>
 
                             {/* 4. Submodel */}
                             <div className="relative">
                                 <label className="block text-zinc-300 text-xs font-bold mb-1 ml-1 font-thai">{lang === 'TH' ? '4. รุ่นย่อย' : '4. Sub-Model'}</label>
-                                <select 
-                                    className="w-full bg-white text-zinc-900 font-bold px-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
-                                    value={submodel}
-                                    onChange={(e) => setSubmodel(e.target.value)}
-                                    disabled={!model}
-                                >
-                                    <option value="" disabled>{lang === 'TH' ? 'เลือกรุ่นย่อย' : 'Select Sub-model'}</option>
-                                    {getSubmodels(brand, model).map(s => <option key={s} value={s}>{s}</option>)}
-                                </select>
+                                <div className="relative">
+                                    <select 
+                                        className="w-full bg-white text-zinc-900 font-bold px-4 py-3 rounded-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none cursor-pointer disabled:bg-zinc-200 disabled:cursor-not-allowed"
+                                        value={submodel}
+                                        onChange={(e) => setSubmodel(e.target.value)}
+                                        disabled={!model || loadingDropdown}
+                                    >
+                                        <option value="" disabled>{lang === 'TH' ? 'เลือกรุ่นย่อย' : 'Select Sub-model'}</option>
+                                        {submodelsList.map(s => <option key={s.val} value={s.val}>{s.text}</option>)}
+                                    </select>
+                                    {loadingDropdown && !!model && !submodelsList.length && <Loader2 className="absolute right-3 top-3.5 text-emerald-500 animate-spin" size={18} />}
+                                </div>
                             </div>
                         </div>
 

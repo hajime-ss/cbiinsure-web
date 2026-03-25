@@ -1,0 +1,31 @@
+AAGI 1 SingleRate (BKK)
+AIG 1 Happy Choice
+AXA 1 25PD08 GG (กทม.และปริมณฑล)
+BKI 1 Region กทม. ปริมณฑล
+BKI 1 อุ่นใจวัยเก๋า (55-75ปี) กทม. ปริมณฑล
+BKI 1 เลือกทุนเองได้ B (รถชนรถไม่เก็บ)
+BUI 1 G5
+CHB 1 ANC Smart Drive กรุงเทพ และปริมณฑล
+CHB 1 Smart Drive V2 กรุงเทพ และปริมณฑล
+DVS 1 SUPER SAVE MINI
+DVS 1 สบายกระเป๋า G5
+IIC 1  คุ้มคุ้ม G5
+ISV 1 Smart Save Plan G5
+MSIG 1 ULTRA SAVE
+MTI 1 ECO
+MTI 1 รถบ้านใช้น้อย C10 (10,000 ก.ม.)
+MTI 1 รถบ้านใช้น้อย C10 (5,000 ก.ม.)
+MTI 1 รถบ้านใช้น้อย C10 (7,500 ก.ม.)
+SOMPO 1 Single Rate กทม.
+TIP 1 Best Drive DG G5
+TIP 1 Best Drive GG G5
+TIP 1 Premium Garage Plus G5
+TIP 1 อัพทูไมล์ (10,000 ก.ม.)
+TIP 1 อัพทูไมล์ (5,000 ก.ม.)
+TIP 1 อัพทูไมล์ (8,000 ก.ม.)
+TMSTH 1 SEDAN SABAI
+TVI 1 New BUDGET
+TVI 1 One Save
+VIB 1 Single Rate 2-15 X37
+VIB 1 Single Rate 2-5ปี X34
+VIB 1 Single Rate 2-5ปี X35
