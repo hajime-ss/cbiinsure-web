@@ -390,6 +390,47 @@ const AdminDashboard = () => {
                                 </table>
                             </div>
                         </div>
+
+                        {/* GitHub Live Changelog Section */}
+                        <div className="glass-premium rounded-xl border border-zinc-800/50 p-6 mt-6">
+                            <div className="flex items-center justify-between cursor-pointer group" onClick={() => { setShowCommits(!showCommits); if(!showCommits) fetchCommits(); }}>
+                                <div>
+                                    <h3 className="font-semibold text-white flex items-center gap-2"><KeyRound size={18} className="text-emerald-500" /> System Changelog & Deployments</h3>
+                                    <p className="text-xs text-zinc-400 mt-1">View the latest secure code pushes running live on this V1 Infrastructure.</p>
+                                </div>
+                                <div className="w-8 h-8 rounded-full bg-zinc-800/50 flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                                    <ChevronRight size={16} className={`text-zinc-400 transition-transform ${showCommits ? 'rotate-90' : ''}`} />
+                                </div>
+                            </div>
+                            
+                            <AnimatePresence>
+                                {showCommits && (
+                                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                                        <div className="pt-6 mt-4 border-t border-zinc-800/50 space-y-3">
+                                            {commitsLoading ? (
+                                                <div className="flex items-center justify-center gap-3 text-zinc-500 text-sm py-4"><Loader2 size={16} className="animate-spin text-emerald-500" /> Fetching GitHub logs...</div>
+                                            ) : (
+                                                commits.map(c => (
+                                                    <div key={c.sha} className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-zinc-900/50 hover:bg-zinc-900/80 transition-colors rounded-lg border border-zinc-800/50 gap-3">
+                                                        <div>
+                                                            <div className="text-sm text-zinc-200 font-medium leading-relaxed">{c.commit.message}</div>
+                                                            <div className="text-xs text-zinc-500 mt-1 flex items-center gap-2">
+                                                                <span className="w-2 h-2 rounded-full bg-emerald-500/50"></span>
+                                                                Pushed {new Date(c.commit.author.date).toLocaleString()} by {c.commit.author.name}
+                                                            </div>
+                                                        </div>
+                                                        <a href={c.html_url} target="_blank" rel="noreferrer" className="text-xs font-mono text-emerald-500 hover:text-emerald-400 hover:underline bg-emerald-500/10 px-2.5 py-1.5 rounded w-max whitespace-nowrap">
+                                                            Commit {c.sha.substring(0, 7)}
+                                                        </a>
+                                                    </div>
+                                                ))
+                                            )}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
                     </motion.div>
                 ) : (
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto space-y-6">
