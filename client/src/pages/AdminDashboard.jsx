@@ -32,11 +32,28 @@ const AdminDashboard = () => {
     const [authLoading, setAuthLoading] = useState(false);
     const [authError, setAuthError] = useState('');
 
-    // --- Dashboard State ---
+    // --- Dashboard & Versioning State ---
+    const APP_VERSION = "1.0.2";
     const [view, setView] = useState('dashboard');
     const [submissions, setSubmissions] = useState([]);
     const [stats, setStats] = useState({ total: 0, pending: 0, sent: 0 });
     const [searchTerm, setSearchTerm] = useState('');
+    const [commits, setCommits] = useState([]);
+    const [commitsLoading, setCommitsLoading] = useState(false);
+    const [showCommits, setShowCommits] = useState(false);
+
+    const fetchCommits = async () => {
+        if (commits.length > 0) return;
+        setCommitsLoading(true);
+        try {
+            const res = await fetch('https://api.github.com/repos/hajime-ss/cbiinsure-web/commits?per_page=10');
+            const data = await res.json();
+            if (Array.isArray(data)) setCommits(data);
+        } catch (e) {
+            console.error("Failed to fetch public commits from GitHub", e);
+        }
+        setCommitsLoading(false);
+    };
     
     // --- Settings State ---
     const [config, setConfig] = useState({
@@ -194,7 +211,7 @@ const AdminDashboard = () => {
                             <Shield className="w-8 h-8 text-emerald-500" />
                         </div>
                         <h1 className="text-2xl font-bold tracking-tight text-white">Chonburi Command</h1>
-                        <p className="text-sm text-zinc-400 mt-1">Authorized personnel only.</p>
+                        <p className="text-sm text-zinc-400 mt-1">Authorized personnel only. <span className="text-emerald-500 font-mono ml-2">v{APP_VERSION}</span></p>
                     </div>
 
                     {authError && (
@@ -260,7 +277,7 @@ const AdminDashboard = () => {
                         <div className="w-8 h-8 bg-emerald-500/10 rounded flex items-center justify-center border border-emerald-500/20">
                             <Shield className="w-4 h-4 text-emerald-500" />
                         </div>
-                        <span className="font-bold tracking-tight text-white hidden sm:block">Chonburi Command</span>
+                        <span className="font-bold tracking-tight text-white hidden sm:flex items-center gap-2">Chonburi Command <span className="text-emerald-500 font-mono text-[10px] border border-emerald-500/20 bg-emerald-500/10 px-1.5 py-0.5 rounded uppercase">Ver {APP_VERSION}</span></span>
                     </div>
 
                     <div className="flex items-center gap-1 bg-zinc-900/80 p-1 rounded-lg border border-zinc-800/50">
