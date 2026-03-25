@@ -77,6 +77,14 @@ const Layout = () => {
                     e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
                     e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
                 }}
+                onTouchMove={(e) => {
+                    if (!e.touches[0]) return;
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = e.touches[0].clientX - rect.left;
+                    const y = e.touches[0].clientY - rect.top;
+                    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+                    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+                }}
                 className="fixed top-0 left-0 w-full z-50 group border-b border-white/10"
             >
                 {/* Base Dark Glass Tint (Increased Opacity as requested) */}
@@ -192,13 +200,13 @@ const Layout = () => {
                         exit={{ opacity: 0, height: 0 }}
                         className="fixed top-16 left-0 w-full bg-zinc-900/95 backdrop-blur-xl border-b border-white/10 z-40 overflow-hidden md:hidden"
                     >
-                        <div className="flex flex-col p-6 space-y-5">
-                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.home}</Link>
-                            <Link to="/insurance-info" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.plans}</Link>
-                            <Link to="/claims" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.claims}</Link>
-                            <Link to="/why-us" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.why}</Link>
-                            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.about}</Link>
-                            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-[17px] font-bold text-white font-thai">{t.contact}</Link>
+                        <div className="flex flex-col p-4 space-y-2">
+                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-md text-lg font-bold text-white font-thai active:bg-white/10 transition-colors touch-manipulation">{t.home}</Link>
+                            <Link to="/insurance-info" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-md text-lg font-bold text-white font-thai active:bg-white/10 transition-colors touch-manipulation">{t.plans}</Link>
+                            <Link to="/claims" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-md text-lg font-bold text-white font-thai active:bg-white/10 transition-colors touch-manipulation">{t.claims}</Link>
+                            <Link to="/why-us" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-md text-lg font-bold text-white font-thai active:bg-white/10 transition-colors touch-manipulation">{t.why}</Link>
+                            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-md text-lg font-bold text-white font-thai active:bg-white/10 transition-colors touch-manipulation">{t.about}</Link>
+                            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 px-4 rounded-md text-lg font-bold text-white font-thai active:bg-white/10 transition-colors touch-manipulation">{t.contact}</Link>
 
                             <div className="pt-3 border-t border-white/10 flex flex-col gap-4">
                                 {user ? (

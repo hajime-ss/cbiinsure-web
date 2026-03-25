@@ -219,7 +219,7 @@ const Home = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 }}
-                        className="bg-white/10 backdrop-blur-xl p-6 rounded-lg border border-white/20 shadow-2xl text-left"
+                        className="bg-white/10 backdrop-blur-xl p-6 rounded-lg border border-white/20 shadow-2xl text-left relative z-20 touch-manipulation"
                     >
                         <h2 className="text-white font-bold text-xl mb-4 font-thai flex items-center gap-2">
                             <Search size={20} className="text-emerald-400" />
@@ -301,7 +301,7 @@ const Home = () => {
                         <button
                             onClick={handleSearch}
                             disabled={!year || !brand || !model || !submodel}
-                            className="w-full bg-amber-500 hover:bg-amber-400 disabled:bg-zinc-500 disabled:text-zinc-300 disabled:cursor-not-allowed text-black font-bold py-4 px-6 text-lg transition-all rounded-sm font-thai shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
+                            className="w-full bg-amber-500 hover:bg-amber-400 active:scale-95 active:bg-amber-600 disabled:bg-zinc-500 disabled:text-zinc-300 disabled:cursor-not-allowed text-black font-bold py-4 px-6 text-lg transition-all rounded-sm font-thai shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] select-none"
                         >
                             {lang === 'TH' ? 'เปรียบเทียบราคาเลย!' : 'COMPARE PRICES NOW!'}
                         </button>
@@ -320,7 +320,7 @@ const Home = () => {
                 <motion.div
                     animate={{ y: [0, 10, 0] }}
                     transition={{ repeat: Infinity, duration: 2 }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50"
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 pointer-events-none"
                 >
                     <ChevronRight size={32} className="rotate-90" />
                 </motion.div>
