@@ -14,15 +14,20 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Security: Restrict CORS
-const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
+// Security: Flexible CORS
 app.use(cors({
     origin: function(origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
+        if (!origin) return callback(null, true); // Allow curl/postman/backend requests
+
+        const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
+        const normalizedOrigin = origin.replace(/\/$/, ""); // Strip trailing slashes
+        
+        // Auto-allow vercel.app domains and exact frontend url matches
+        if (normalizedOrigin.endsWith('.vercel.app') || allowedOrigins.some(o => o && o.replace(/\/$/, "") === normalizedOrigin)) {
+            return callback(null, true);
         }
+
+        callback(new Error(`Not allowed by CORS. Origin blocked: ${origin}`));
     }
 }));
 app.use(express.json());
