@@ -264,6 +264,17 @@ const AdminDashboard = () => {
                         )}
                     </AnimatePresence>
                 </motion.div>
+
+                {/* Teto Pear Watermark */}
+                <div className="fixed bottom-4 right-6 flex flex-col items-center opacity-40 hover:opacity-100 transition-opacity z-50 pointer-events-none">
+                    <img 
+                        src="/teto-pear.png" 
+                        alt="Teto Pear" 
+                        className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.3)] filter grayscale hover:grayscale-0 transition-all" 
+                        onError={(e) => { e.target.style.display = 'none'; }} 
+                    />
+                    <span className="text-[9px] font-mono text-zinc-500 mt-1.5 tracking-widest uppercase">[teto space]</span>
+                </div>
             </div>
         );
     }

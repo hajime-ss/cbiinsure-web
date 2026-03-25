@@ -68,6 +68,20 @@ app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'UP', timestamp: new Date().toISOString() });
 });
 
+// Autonomous Internal Cron Job (Prevents Render Sleep)
+const https = require('https');
+const RENDER_URL = process.env.RENDER_EXTERNAL_URL; // Render automatically defines this
+if (RENDER_URL) {
+    setInterval(() => {
+        https.get(`${RENDER_URL}/api/health`, (res) => {
+            console.log(`[CRON] Automated Keep-Alive Ping Sent! Status: ${res.statusCode}`);
+        }).on('error', (err) => {
+            console.error(`[CRON] Keep-Alive Ping Failed: ${err.message}`);
+        });
+    }, 14 * 60 * 1000); // Exactly 14 Minutes
+    console.log(`[CRON] Autonomous Keep-Alive initialized for: ${RENDER_URL}`);
+}
+
 // Admin Auth Middleware
 const verifyAdmin = (req, res, next) => {
     const apiKey = req.headers['x-admin-api-key'];
