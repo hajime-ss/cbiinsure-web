@@ -14,16 +14,36 @@ let cachedViewState = null;
  */
 const puppeteer = require('puppeteer');
 
+// Global Browser Instance to completely prevent RAM crashes under concurrent stress testing
+let globalBrowser = null;
+const getBrowser = async () => {
+    if (!globalBrowser) {
+        globalBrowser = await puppeteer.launch({
+            headless: 'new',
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
+        });
+    }
+    return globalBrowser;
+};
+
 async function scrapeQuotes(params) {
-    let browser = null;
+    let page = null;
     try {
         console.log("Scraping quotes for:", params);
-        // Start headless browser
-        browser = await puppeteer.launch({
-            headless: 'new',
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        // Bind to global Chrome instance instead of spawning purely new RAM-heavy browsers
+        const browser = await getBrowser();
+        page = await browser.newPage();
+
+        // MASSIVE SPEED HACK: Block rendering of all images, stylesheets, and fonts
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+            const blockedTypes = ['image', 'stylesheet', 'font', 'media'];
+            if (blockedTypes.includes(req.resourceType())) {
+                req.abort();
+            } else {
+                req.continue();
+            }
         });
-        const page = await browser.newPage();
 
         // Go directly to Prakun search using query params if they accept them,
         // Wait, ANC uses POST redirects. Let's start at ANC, fill out the form, and click search.
@@ -77,7 +97,7 @@ async function scrapeQuotes(params) {
         // Click Search and wait for navigation (redirect to prakun.com)
         console.log("Submitting form on ANC...");
         await Promise.all([
-            page.waitForNavigation({ waitUntil: 'networkidle0', timeout: 30000 }),
+            page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 30000 }), // Downgraded from networkidle0 to prevent timeouts on ad scripts
             page.click('#ContentPlaceHolder_ucIntro_btCal2')
         ]);
 
@@ -135,12 +155,6 @@ async function scrapeQuotes(params) {
         } catch (e) {
             console.log("Deductible filter 'DD1' not found or failed to click.");
         }
-
-        // Dump HTML for debugging
-        await page.screenshot({ path: 'debug_scrape.png', fullPage: true });
-        const fs = require('fs');
-        fs.writeFileSync('prakun_results.html', await page.content());
-        console.log("Wrote prakun_results.html and debug_scrape.png");
 
         // Extract data
         const quotes = await page.evaluate((filterClass) => {
@@ -319,7 +333,8 @@ async function scrapeQuotes(params) {
             return results;
         }, params.filterClass);
 
-        await browser.close();
+        // DO NOT CLOSE THE GLOBAL BROWSER! Simply close this isolated memory tab.
+        await page.close();
 
         if (quotes.length === 0) {
             console.log("No quotes found for this class/car combination. Returning empty exact data.");
@@ -333,7 +348,7 @@ async function scrapeQuotes(params) {
         };
 
     } catch (error) {
-        if (browser) await browser.close();
+        if (page) await page.close().catch(() => null);
         console.error('Puppeteer Scraper Error:', error.message);
         return {
             success: false,

@@ -12,6 +12,7 @@ require('./manager');
 dotenv.config();
 
 const app = express();
+app.set('trust proxy', 1); // Crucial for Render reverse proxy to pass real IPs to rate limiters
 const port = process.env.PORT || 3000;
 
 // Security: Flexible CORS
